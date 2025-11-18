@@ -7,9 +7,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Parkinsans:wght@300..800&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <title>Dashboard Pemeliharaan - Frostware</title>
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -40,58 +40,55 @@
             display: flex;
             flex-direction: row;
             z-index: 1;
+        }
+        .head-title {
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            margin-right: auto;
+        }
 
-            .head-title {
-                color: white;
-                font-size: 26px;
-                font-weight: 600;
-                margin-right: auto;
-            }
+        .head-info {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
 
-            .head-info {
-                display: inline-flex;
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 5px;
-            }
+        .user-info {
+            border: none;
+            background: none;
+            display: inline-flex;
+            flex-direction: row;
+            gap: 5px;
+        }
 
-            .user-info {
-                border: none;
-                background: none;
-                display: inline-flex;
-                flex-direction: row;
-                gap: 5px;
+        .user {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-                .user {
-                    color: white;
-                    font-size: 16px;
-                    font-weight: 500;
-                }
+        svg {
+            width: 10px;
+        }
 
-                svg {
-                    width: 10px;
-                }
-            }
+        .user-info:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
 
-            .user-info:hover {
-                cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.06);
-            }
+        .date {
+            padding-right: 8px;
+            display: inline-flex;
+            flex-direction: row;
+            gap: 5px;
+        }
 
-
-            .date {
-                padding-right: 8px;
-                display: inline-flex;
-                flex-direction: row;
-                gap: 5px;
-
-                p {
-                    color: rgba(255, 255, 255, 0.60);
-                    font-size: 12px;
-                    font-weight: 400;
-                }
-            }
-
+        .date p {
+            color: rgba(255, 255, 255, 0.60);
+            font-size: 12px;
+            font-weight: 400;
         }
 
         .user-panel {
@@ -99,7 +96,6 @@
             height: fit-content;
             padding: 20px 25px 15px 25px;
             background: #000;
-            /* display: inline-flex; */
             display: none;
             flex-direction: column;
             justify-content: flex-start;
@@ -109,83 +105,67 @@
             position: fixed;
             right: 20px;
             top: 50px;
-            z-index: 100;
-            
-            .user-role {
-                color: #fff;
-                font-size: 16px;
-                font-family: Parkinsans;
-                /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; */
-                font-weight: 600;
-                margin-bottom: 5px;
-                /* line-height: 16px; */
-                /* word-wrap: break-word; */
-            }
+            z-index: 100;            
+        }
 
-            .user-email {
-                color: rgba(255, 255, 255, 0.60);
-                font-size: 12px;
-                /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; */
-                font-weight: 400;
-                /* line-height: 16px; */
-                /* word-wrap: break-word; */
-            }
+        .user-role {
+            color: #fff;
+            font-size: 16px;
+            font-family: Parkinsans;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
 
-            .user-name {
-                color: #fff;
-                font-size: 14px;
-                /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; */
-                font-weight: 400;
-                /* line-height: 16px; */
-                /* word-wrap: break-word; */
-            }
+        .user-email {
+            color: rgba(255, 255, 255, 0.60);
+            font-size: 12px;
+            font-weight: 400;
+        }
 
-            .user-divider {
-                align-self: stretch;
-                height: 5px;
-                /* position: relative; */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.60);
-                box-sizing: border-box;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
+        .user-name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
 
-            form {
-                margin-left: auto;
-            }
+        .user-divider {
+            align-self: stretch;
+            height: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.60);
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
 
-            .user-actions {
-                /* overflow: hidden; */
-                display: inline-flex;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 10px;
-                margin-left: auto;
-                padding: 5px 10px;
-                border-radius: 3px;
-            }
+        form {
+            margin-left: auto;
+        }
 
-            button.user-actions:hover {
-                cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.2);
-            }
+        .user-actions {
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
 
-            .logout-text {
-                color: #fff;
-                font-size: 14px;
-                /* font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; */
-                font-weight: 400;
-                /* line-height: 16px; */
-                /* word-wrap: break-word; */
-            }
+        button.user-actions:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .logout-text {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
         }
 
         /* body konten*/
         .container {
             position: absolute;
             top: 111px;
-            /* left: 40px;
-            right: 40px; */
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -231,13 +211,45 @@
             flex-direction: column;
             align-items: flex-start;
             padding: 20px;
-            gap: 29px;
+            gap: 7px;
+            width: 100%;
             width: 540px;
             background: #FFFFFF;
             border: 1px solid #AAAAAA;
             border-radius: 15px;
             margin-top: 50px;
             min-height: 260px;
+        }
+        
+        .edit-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .action-buttons button {
+            width: 25px;
+            height: 25px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+        
+        .action-buttons button.delete {
+            background-color: transparent;
+            color: black;
+            font-size: 16px;
+            line-height: 1;
+            font-size: 20px;
         }
 
         /* Badge */
@@ -284,12 +296,16 @@
         /* Table styling */
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
+            border-collapse: collapse;
             font-family: 'Arimo', sans-serif;
         }
         thead tr {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #E0E0E0;
+        }
+        tbody td {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #E0E0E0;
         }
         th {
             text-align: left;
@@ -297,7 +313,7 @@
             font-size: 14px;
             line-height: 20px;
             color: #0A0A0A;
-            padding-bottom: 12px;
+            padding: 12px 10px;
         }
         td {
             padding: 12px 10px;
@@ -390,7 +406,17 @@
         <div style="width:100%; height:1px; background:#000; opacity:.1; margin:20px 0;"></div>
 
         <div class="card">
-            <button class="btn-small">Aktifkan Mode Edit</button>
+        <div class="edit-header">
+            <button class="btn-small" onclick="window.location.href='{{ route('kelolaaset') }}'">Matikan Mode Edit</button>
+            <div class="action-buttons">
+                <button class="add" title="Tambah">
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+                <button class="delete" title="Hapus">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            </div>
+        </div>
 
             <table>
                 <thead>
@@ -437,7 +463,6 @@
         <div style="width:100%; height:1px; background:#000; opacity:.1; margin:20px 0;"></div>
 
         <div class="card" style="min-height: 342px;">
-            <button class="btn-small">Aktifkan Mode Edit</button>
             <button class="btn-small">Lihat Laporan Kerusakan</button>
 
 
