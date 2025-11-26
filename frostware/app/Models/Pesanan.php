@@ -19,9 +19,7 @@ class Pesanan extends Model
         'jumlahBalok',
         'totalHarga',
         'status',
-        'keteranganPenolakan',
-        'idDriver', // <-- TAMBAHKAN INI
-        'idAset',   // <-- TAMBAHKAN INI
+        'keteranganPenolakan'
     ];
 
     protected $casts = [
@@ -41,35 +39,41 @@ class Pesanan extends Model
         return (int) $query->sum('jumlahBalok');
     }
 
-    /**
-     * Update status and optional keteranganPenolakan
-     * Accepts an optional second argument for keterangan.
-     */
-    public function updateStatus(string $status, ?string $keterangan = null)
+
+    public function updateStatus(string $status)
     {
         $this->status = $status;
-        if (!is_null($keterangan)) {
-            $this->keteranganPenolakan = $keterangan;
-        }
         return (bool) $this->save();
     }
 
-    // Relasi ke pelanggan
     public function pelanggan()
     {
         return $this->belongsTo(Akun::class, 'idPelanggan', 'idAkun');
     }
-
-    // ===== TAMBAHAN BARU: Relasi ke Driver =====
-    public function driver()
+    
+    /*
+    public static function cariDaftarProduksi()
     {
-        // idDriver di tabel ini terhubung ke idAkun di tabel Akun
-        return $this->belongsTo(Akun::class, 'idDriver', 'idAkun');
+        return self::whereRaw("LOWER(status) = 'belum diproduksi'")->get();
     }
 
-    // ===== TAMBAHAN BARU: Relasi ke Truk (Aset) =====
-    public function truk()
+    public static function cariUrutanProduksi()
     {
-        return $this->belongsTo(Aset::class, 'idAset');
+        return self::whereRaw("LOWER(status) = 'belum diproduksi'")
+            ->orderBy('tanggalKirim', 'asc')
+            ->get();
     }
+
+    public static function ubahStatus($idPesanan, string $status): bool
+    {
+        $pesanan = self::find($idPesanan);
+        if (! $pesanan) {
+            return false;
+        }
+
+        $pesanan->status = $status;
+        return (bool) $pesanan->save();
+    }
+    */
+
 }
